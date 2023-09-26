@@ -12,8 +12,13 @@ export const ProductCard: FC<ProductCardProps> = ({
   className = "",
 }: ProductCardProps) => {
   return (
-    <div className={`${className} flex flex-col gap-4`}>
-      <Image src={product.image} alt={product.title} width={400} height={400} />
+    <div className={`${className} flex flex-col gap-4 border border-black`}>
+      <img
+        src={product.image}
+        alt={product.title}
+        className='w-[400px] h-[400px]'
+        loading='lazy'
+      />
       <span>{product.title}</span>
     </div>
   );
