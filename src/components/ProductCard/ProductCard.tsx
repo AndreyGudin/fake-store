@@ -1,6 +1,5 @@
 import type { FC } from "react";
 import { ProductSchema } from "@/types/ProductSchema";
-import Image from "next/image";
 import Link from "next/link";
 
 interface ProductCardProps {
