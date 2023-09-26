@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { ProductSchema } from "@/types/ProductSchema";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductCardProps {
   className?: string;
@@ -19,7 +20,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         className='w-[400px] h-[400px]'
         loading='lazy'
       />
-      <span>{product.title}</span>
+      <Link href={`/${product.id}`}>{product.title}</Link>
     </div>
   );
 };
