@@ -16,7 +16,7 @@ export const Products: FC<ProductsProps> = function Products({
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <div className={`${className}`}>
+    <div className={`${className} flex gap-7 flex-wrap`}>
       {products?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
