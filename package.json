@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start:server": "node ./json-server/index.js"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.35.3",
