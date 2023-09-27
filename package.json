@@ -26,5 +26,8 @@
     "typescript": "5.2.2",
     "zod": "^3.22.2",
     "zustand": "^4.4.1"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.3"
   }
 }
