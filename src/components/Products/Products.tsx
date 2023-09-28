@@ -15,10 +15,10 @@ export const Products: FC<ProductsProps> = function Products({
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <div className={`${className} flex gap-7 flex-wrap`}>
+    <section className={`${className} flex gap-7 flex-wrap justify-center`}>
       {products?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
-    </div>
+    </section>
   );
 };
