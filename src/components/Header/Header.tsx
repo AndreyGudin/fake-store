@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import Link from "next/link";
 import { memo } from "react";
 import type { FC } from "react";
@@ -12,7 +13,7 @@ export const Header: FC<HeaderProps> = memo(function Header({
   return (
     <menu className={`${className} h-[100px] w-full`}>
       <Link href={"/create"}>
-        <button>Create product</button>
+        <Button variant={"default"}>Create product</Button>
       </Link>
     </menu>
   );
