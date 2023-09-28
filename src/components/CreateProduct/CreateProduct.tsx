@@ -25,10 +25,16 @@ export const CreateProduct: FC<CreateProductProps> = ({
   return (
     <form
       className={`${className} flex flex-col gap-6 w-[400px] h-fit border border-blue-200 p-4`}
+      onSubmit={handleSubmit((data) => {
+        console.log(data);
+      })}
     >
       <Input placeholder='Title' {...register("title")} />
       {errors.title?.message && <p>{errors.title?.message as string}</p>}
-      <Input placeholder='Price' {...register("price")} />
+      <Input
+        placeholder='Price'
+        {...register("price", { valueAsNumber: true })}
+      />
       {errors.price?.message && <p>{errors.title?.message as string}</p>}
       <Input placeholder='Description' {...register("description")} />
       {errors.description?.message && <p>{errors.title?.message as string}</p>}
