@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { memo } from "react";
 import type { FC } from "react";
 
@@ -10,7 +11,9 @@ export const Header: FC<HeaderProps> = memo(function Header({
 }: HeaderProps) {
   return (
     <menu className={`${className} h-[100px] w-full`}>
-      <button>Create product</button>
+      <Link href={"/create"}>
+        <button>Create product</button>
+      </Link>
     </menu>
   );
 });
