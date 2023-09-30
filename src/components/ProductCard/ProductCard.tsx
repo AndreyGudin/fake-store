@@ -13,7 +13,7 @@ export const ProductCard: FC<ProductCardProps> = ({
 }: ProductCardProps) => {
   return (
     <div
-      className={`${className} w-[500px] flex flex-col gap-4 border border-black items-center p-3 h-fit`}
+      className={`${className} w-[500px]  flex flex-col gap-4 border border-black items-center p-3 h-fit`}
     >
       <img
         src={product.image}

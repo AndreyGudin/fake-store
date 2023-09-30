@@ -30,42 +30,21 @@ export const CreateProduct: FC<CreateProductProps> = ({
 }: CreateProductProps) => {
   const {
     register,
-    watch,
     handleSubmit,
     setValue,
     formState: { errors },
   } = useForm<ProductSchema>({ resolver: zodResolver(ProductValidator) });
   const mutation = usePostProduct();
   const { data: products } = useProducts();
-  const router = useRouter();
   const queryClient = useQueryClient();
 
   const onSubmit: SubmitHandler<ProductSchema> = (data) => {
-    const obj = {
+    const newProduct = {
       ...data,
-      id: products?.length ? products?.length + 1 : 1,
+      id: products?.length ? products?.length + 1 : Math.random() * 900 + 100,
     };
-    console.log("success");
-    // mutation.mutate(obj);
-    mutation.mutate({
-      id: 21,
-      title: "123",
-      price: 109.95,
-      description:
-        "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      category: "men's clothing",
-      image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-      rating: { rate: 3.9, count: 120 },
-    });
+    mutation.mutate(newProduct);
   };
-
-  useEffect(() => {
-    console.log("errors", errors);
-    const subscription = watch((value, { name, type }) =>
-      console.log(value, name, type)
-    );
-    return () => subscription.unsubscribe();
-  }, [errors, watch]);
 
   return (
     <>
@@ -112,16 +91,6 @@ export const CreateProduct: FC<CreateProductProps> = ({
           Create
         </Button>
       </form>
-      <Button
-        onClick={() => {
-          console.log("data:", queryClient.getQueryData(["products"]));
-          console.log("state:", queryClient.getQueryState(["products"]));
-          console.log("cache:", queryClient.getQueryCache());
-        }}
-        variant={"default"}
-      >
-        Get
-      </Button>
     </>
   );
 };

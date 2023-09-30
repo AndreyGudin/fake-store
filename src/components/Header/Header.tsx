@@ -20,16 +20,6 @@ export const Header: FC<HeaderProps> = memo(function Header({
       <Link href={"/create"}>
         <Button variant={"default"}>Create product</Button>
       </Link>
-      <Button
-        onClick={() => {
-          console.log("data:", queryClient.getQueryData(["products"]));
-          console.log("state:", queryClient.getQueryState(["products"]));
-          console.log("cache:", queryClient.getQueryCache());
-        }}
-        variant={"default"}
-      >
-        Get
-      </Button>
     </menu>
   );
 });

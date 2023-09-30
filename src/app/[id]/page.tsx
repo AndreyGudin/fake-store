@@ -13,13 +13,12 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const product = await getProduct(params.id);
   return (
     <div>
       <Link href={"/"}>
         <Button variant={"secondary"}>Back</Button>
       </Link>
-      <ProductInfo product={product} />
+      <ProductInfo id={params.id} />
     </div>
   );
 }
