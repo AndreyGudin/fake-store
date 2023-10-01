@@ -3,6 +3,7 @@
 import type { FC } from "react";
 import { ProductSchema } from "@/types/ProductSchema";
 import { useProduct } from "@/hooks/useProduct";
+import { ProductForm } from "@/components/ProductForm";
 
 interface ProductInfoProps {
   className?: string;
@@ -20,13 +21,12 @@ export const ProductInfo: FC<ProductInfoProps> = ({
   return (
     <>
       {product ? (
-        <div className={`${className} flex flex-col gap-4`}>
-          <img src={product.image} className='w-[400px] w-[400px]' />
-          <span>{product.category}</span>
-          <span>{product.title}</span>
-          <span>{product.description}</span>
-          <span>{product.price}</span>
-        </div>
+        <ProductForm
+          defaultProduct={product}
+          buttonName={"Save"}
+          onSubmit={() => {}}
+          modifyButton
+        />
       ) : (
         <div>No info</div>
       )}
