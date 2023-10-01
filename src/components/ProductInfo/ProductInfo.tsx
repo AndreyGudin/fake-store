@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import { ProductSchema } from "@/types/ProductSchema";
 import { useProduct } from "@/hooks/useProduct";
 import { ProductForm } from "@/components/ProductForm";
@@ -15,7 +15,6 @@ export const ProductInfo: FC<ProductInfoProps> = ({
   className = "",
 }: ProductInfoProps) => {
   const { data: product, isLoading } = useProduct(id);
-
   if (isLoading) return <div>Loading</div>;
 
   return (
