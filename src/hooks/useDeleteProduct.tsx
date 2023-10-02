@@ -6,15 +6,20 @@ import { ProductSchema } from "@/types/ProductSchema";
 export const useDeleteProduct = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (id: string) => {
+    mutationFn: (id: number) => {
       const products = queryClient.getQueryData([
         "products",
       ]) as ProductSchema[];
-      const productId = products.findIndex((item) => item.id === Number(id));
-      const deleted = products.splice(productId, 1);
-      queryClient.setQueryData(["products"], products);
+      const productId = products.findIndex((item) => item.id === id);
+      const changedProducts = products.toSpliced(productId, 1);
+      queryClient.setQueryData(
+        ["products"],
+        (oldData: ProductSchema[] | undefined) => {
+          return oldData ? changedProducts : oldData;
+        }
+      );
       return new Promise<ProductSchema>((resolve, reject) => {
-        resolve(deleted[0]);
+        resolve(products[id]);
       });
     },
   });
