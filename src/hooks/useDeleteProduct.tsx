@@ -11,7 +11,8 @@ export const useDeleteProduct = () => {
         "products",
       ]) as ProductSchema[];
       const productId = products.findIndex((item) => item.id === id);
-      const changedProducts = products.toSpliced(productId, 1);
+      const changedProducts = [...products];
+      changedProducts.splice(productId, 1);
       queryClient.setQueryData(
         ["products"],
         (oldData: ProductSchema[] | undefined) => {

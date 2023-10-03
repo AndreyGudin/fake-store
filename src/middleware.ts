@@ -4,13 +4,21 @@ const secToken = "eyJhbGciOiJIUzI1NiIsInR";
 
 export default async function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
-  if (token === secToken) return NextResponse.next();
+  let url = req.nextUrl.clone();
 
-  const url = req.nextUrl.clone();
-  url.pathname = "/login";
-  return NextResponse.redirect(url);
+  if (token === secToken && req.nextUrl.pathname !== "/login")
+    return NextResponse.next();
+  if (token === secToken && req.nextUrl.pathname === "/login") {
+    url.pathname = "/products";
+    return NextResponse.redirect(url);
+  }
+  if (req.nextUrl.pathname !== "/login") {
+    url = req.nextUrl.clone();
+    url.pathname = "/login";
+    return NextResponse.redirect(url);
+  }
 }
 
 export const config = {
-  matcher: ["/products", "/"],
+  matcher: ["/products", "/", "/login"],
 };
