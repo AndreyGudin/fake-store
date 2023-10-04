@@ -7,6 +7,8 @@ import { ProductForm } from "@/components/ProductForm";
 import { SubmitHandler } from "react-hook-form";
 import { useProducts } from "@/hooks/useProducts";
 import { usePutProduct } from "@/hooks/usePutProduct";
+import { useToast } from "@/components/Toaster";
+import { Check } from "lucide-react";
 
 interface ProductInfoProps {
   className?: string;
@@ -18,6 +20,7 @@ export const ProductInfo: FC<ProductInfoProps> = ({
   className = "",
 }: ProductInfoProps) => {
   const { data: product, isLoading } = useProduct(id);
+  const { toast } = useToast();
   const mutation = usePutProduct();
 
   if (isLoading) return <div>Loading</div>;
@@ -28,6 +31,11 @@ export const ProductInfo: FC<ProductInfoProps> = ({
       id: Number(id),
     };
     mutation.mutate(newProduct);
+    toast({
+      title: "Done",
+      description: " Product has been modified successfully",
+      action: <Check color='green' strokeWidth={"6px"} />,
+    });
   };
 
   return (

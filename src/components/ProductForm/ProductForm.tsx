@@ -64,18 +64,21 @@ export const ProductForm: FC<ProductFormProps> = ({
         onSubmit={handleSubmit(onSubmit)}
       >
         <Input
+          disabled={disabledButton}
           defaultValue={product.title}
           placeholder='Title'
           {...register("title")}
         />
         {errors.title?.message && <p>{errors.title?.message as string}</p>}
         <Input
+          disabled={disabledButton}
           defaultValue={product.price}
           placeholder='Price'
           {...register("price", { valueAsNumber: true })}
         />
         {errors.price?.message && <p>{errors.title?.message as string}</p>}
         <Input
+          disabled={disabledButton}
           defaultValue={product.description}
           placeholder='Description'
           {...register("description")}
@@ -84,18 +87,21 @@ export const ProductForm: FC<ProductFormProps> = ({
           <p>{errors.title?.message as string}</p>
         )}
         <Input
+          disabled={disabledButton}
           defaultValue={product.category}
           placeholder='Category'
           {...register("category")}
         />
         {errors.category?.message && <p>{errors.title?.message as string}</p>}
         <Input
+          disabled={disabledButton}
           defaultValue={product.image}
           placeholder='Image'
           {...register("image")}
         />
         {errors.image?.message && <p>{errors.title?.message as string}</p>}
         <Select
+          disabled={disabledButton}
           onValueChange={(v) =>
             setValue("rating", { rate: Number(v), count: 0 })
           }

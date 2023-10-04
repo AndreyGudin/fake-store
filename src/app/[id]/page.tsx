@@ -14,11 +14,11 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { id: string } }) {
   return (
-    <div>
-      <Link href={"/products"}>
+    <main className='flex w-full min-h-screen justify-center items-center'>
+      <Link className='self-start' href={"/products"}>
         <Button variant={"secondary"}>Back</Button>
       </Link>
       <ProductInfo id={params.id} />
-    </div>
+    </main>
   );
 }
