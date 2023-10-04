@@ -25,7 +25,6 @@ export const LoginForm: FC<LoginFormProps> = memo(function LoginForm({
     formState: { errors },
   } = useForm<User>({ resolver: zodResolver(UserValidator) });
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
   const { mutate, isError, isLoading, error, data: responseToken } = useLogin();
 
   const onSubmit: SubmitHandler<User> = async (data) => {
@@ -62,7 +61,9 @@ export const LoginForm: FC<LoginFormProps> = memo(function LoginForm({
           {error.response?.status === 403 ? "User not found" : null}
         </p>
       )}
-      <Button type='submit'>Log in</Button>
+      <Button loading={isLoading} type='submit'>
+        Log in
+      </Button>
     </form>
   );
 });
