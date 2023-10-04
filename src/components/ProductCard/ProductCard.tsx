@@ -15,6 +15,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/AlertDiablog";
+import Image from "next/image";
 
 interface ProductCardProps {
   className?: string;
@@ -55,10 +56,11 @@ export const ProductCard: FC<ProductCardProps> = ({
         </AlertDialogContent>
       </AlertDialog>
 
-      <img
-        src={product.image}
+      <Image
+        src={product.image ?? ""}
         alt={product.title}
-        className='w-[400px]'
+        width={400}
+        height={400}
         loading='lazy'
       />
       <span>{product.title}</span>

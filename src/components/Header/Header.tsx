@@ -20,7 +20,6 @@ export const Header: FC<HeaderProps> = memo(function Header({
 
   const handleLogOut = useCallback(() => {
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-    console.log(process.env.NEXT_PUBLIC_TOKEN);
     router.push("/login");
   }, [router]);
 
