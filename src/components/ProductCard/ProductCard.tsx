@@ -4,6 +4,17 @@ import Link from "next/link";
 import { Button } from "@/components/Button";
 import { TrashIcon } from "lucide-react";
 import { useDeleteProduct } from "@/hooks/useDeleteProduct";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/AlertDiablog";
 
 interface ProductCardProps {
   className?: string;
@@ -17,7 +28,6 @@ export const ProductCard: FC<ProductCardProps> = ({
   const mutation = useDeleteProduct();
 
   const handleDelete = useCallback(() => {
-    console.log("delete");
     mutation.mutate(product.id);
   }, [mutation, product.id]);
 
@@ -25,9 +35,25 @@ export const ProductCard: FC<ProductCardProps> = ({
     <div
       className={`${className} w-[500px]  flex flex-col gap-4 border border-black items-center p-3 h-fit`}
     >
-      <Button onClick={handleDelete} className='self-end' variant={"outline"}>
-        <TrashIcon />
-      </Button>
+      <AlertDialog>
+        <AlertDialogTrigger className='self-end'>
+          <TrashIcon />
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action will delete this product
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete}>
+              Continue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       <img
         src={product.image}
