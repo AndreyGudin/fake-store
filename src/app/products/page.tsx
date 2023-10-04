@@ -1,6 +1,5 @@
-import { getProduct } from "@/api/controllers/getProduct";
 import { Header } from "@/components/Header";
-import { Products } from "@/components/Products/Products";
+import { Products } from "@/components/Products";
 
 export default function Home() {
   return (

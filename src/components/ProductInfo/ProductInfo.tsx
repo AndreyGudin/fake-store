@@ -18,7 +18,6 @@ export const ProductInfo: FC<ProductInfoProps> = ({
   className = "",
 }: ProductInfoProps) => {
   const { data: product, isLoading } = useProduct(id);
-  const { data: products } = useProducts();
   const mutation = usePutProduct();
 
   if (isLoading) return <div>Loading</div>;

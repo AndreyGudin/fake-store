@@ -5,7 +5,7 @@ import { CreateProduct } from "@/components/CreateProduct";
 export default function Create() {
   return (
     <main className='text-3xl flex flex-col justify-center items-center'>
-      <Link href={"/"} className='self-start'>
+      <Link href={"/products"} className='self-start'>
         <Button variant={"secondary"}>Back</Button>
       </Link>
       <CreateProduct />

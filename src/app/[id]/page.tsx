@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div>
-      <Link href={"/"}>
+      <Link href={"/products"}>
         <Button variant={"secondary"}>Back</Button>
       </Link>
       <ProductInfo id={params.id} />
