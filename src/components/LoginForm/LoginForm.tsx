@@ -11,6 +11,7 @@ import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { Button } from "@/components/Button";
 import { useLogin } from "@/hooks/useLogin";
+import { useIsAuthStore } from "@/hooks/store/useIsAuthStore";
 
 interface LoginFormProps {
   className?: string;
@@ -26,19 +27,18 @@ export const LoginForm: FC<LoginFormProps> = memo(function LoginForm({
   } = useForm<User>({ resolver: zodResolver(UserValidator) });
   const router = useRouter();
   const { mutate, isError, isLoading, error, data: responseToken } = useLogin();
-
+  const setIsAuth = useIsAuthStore((state) => state.setIsAuth);
   const onSubmit: SubmitHandler<User> = async (data) => {
-    console.log("data", data);
     mutate(data);
   };
 
   useEffect(() => {
     if (responseToken) {
-      console.log("responseToken", responseToken);
       document.cookie = `token=${responseToken.token}`;
+      setIsAuth(true);
       router.push("/products");
     }
-  }, [responseToken, router]);
+  }, [responseToken, router, setIsAuth]);
 
   return (
     <form
