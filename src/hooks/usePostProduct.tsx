@@ -13,7 +13,7 @@ export const usePostProduct = () => {
     },
     onSuccess: (data) => {
       queryClient.setQueryData(
-        ["products"],
+        ["limitedProducts"],
         (oldData: ProductSchema[] | undefined) => {
           return oldData ? [...oldData, data] : oldData;
         }

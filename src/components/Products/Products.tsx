@@ -4,6 +4,7 @@ import type { FC } from "react";
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import { ProductsSkeleton } from "./ProductsSkeleton";
+import { useGetLimitProducts } from "@/hooks/useGetLimitProducts";
 
 interface ProductsProps {
   className?: string;
@@ -11,15 +12,22 @@ interface ProductsProps {
 export const Products: FC<ProductsProps> = function Products({
   className = "",
 }: ProductsProps) {
-  const { data: products, isLoading } = useProducts();
+  useProducts();
+  const { data: limitedProducts, refetch, isLoading } = useGetLimitProducts(4);
 
   if (isLoading) return <ProductsSkeleton />;
 
+  const onClick = () => {
+    console.log("limitedProductsOnClick", limitedProducts);
+    refetch();
+  };
+
   return (
     <section className={`${className} flex gap-7 flex-wrap justify-center`}>
-      {products?.map((product) => (
+      {limitedProducts?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
+      <button onClick={onClick}>Click</button>
     </section>
   );
 };
