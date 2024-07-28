@@ -10,10 +10,10 @@ export const useProduct = (productId: string) => {
     queryKey: ["product", productId],
     queryFn: () => {
       const products = queryClient.getQueryData([
-        "products",
+        "limitedProducts",
       ]) as ProductSchema[];
       const product = products.find((item) => item.id === Number(productId));
-      console.log("product");
+      console.log("useproduct", product);
       return new Promise<ProductSchema | undefined>((resolve, reject) =>
         resolve(product)
       );

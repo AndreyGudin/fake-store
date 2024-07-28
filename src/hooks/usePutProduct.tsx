@@ -8,14 +8,13 @@ export const usePutProduct = () => {
   return useMutation({
     mutationFn: (newProduct: ProductSchema) => {
       const products = queryClient.getQueryData([
-        "products",
+        "limitedProducts",
       ]) as ProductSchema[];
       const productId = products.findIndex(
         (item) => item.id === Number(newProduct.id)
       );
-      console.log("product");
       products[productId] = newProduct;
-      queryClient.setQueryData(["products"], products);
+      queryClient.setQueryData(["limitedProducts"], products);
       return new Promise<ProductSchema>((resolve, reject) => {
         resolve(newProduct);
       });

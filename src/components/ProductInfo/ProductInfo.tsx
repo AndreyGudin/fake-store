@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FC } from "react";
+import { type FC } from "react";
 import { ProductSchema } from "@/types/ProductSchema";
 import { useProduct } from "@/hooks/useProduct";
 import { ProductForm } from "@/components/ProductForm";
@@ -19,11 +19,11 @@ export const ProductInfo: FC<ProductInfoProps> = ({
   id,
   className = "",
 }: ProductInfoProps) => {
-  const { data: product, isLoading } = useProduct(id);
+  const { data: product, isLoading, isFetching } = useProduct(id);
   const { toast } = useToast();
   const mutation = usePutProduct();
 
-  if (isLoading) return <div>Loading</div>;
+  if (isFetching) return <div>Loading</div>;
 
   const onSubmit: SubmitHandler<ProductSchema> = (data) => {
     const newProduct = {
@@ -42,7 +42,7 @@ export const ProductInfo: FC<ProductInfoProps> = ({
     <>
       {product ? (
         <ProductForm
-          defaultProduct={product}
+          product={product}
           buttonName={"Save"}
           onSubmit={onSubmit}
           modifyButton

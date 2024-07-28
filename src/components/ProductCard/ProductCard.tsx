@@ -17,6 +17,9 @@ import {
 } from "@/components/AlertDiablog";
 import Image from "next/image";
 
+const bufferImage =
+  "https://www.clipartkey.com/mpngs/m/130-1309314_missing-clipart.png";
+
 interface ProductCardProps {
   className?: string;
   product: ProductSchema;
@@ -57,7 +60,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       </AlertDialog>
 
       <Image
-        src={product.image ?? ""}
+        src={product.image ?? bufferImage}
         alt={product.title}
         width={400}
         height={400}

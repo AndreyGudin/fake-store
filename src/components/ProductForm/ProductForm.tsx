@@ -23,12 +23,12 @@ import { useQueryClient } from "@tanstack/react-query";
 interface ProductFormProps {
   className?: string;
   onSubmit: SubmitHandler<ProductSchema>;
-  defaultProduct?: ProductSchema;
+  product?: ProductSchema;
   buttonName?: string;
   modifyButton?: boolean;
 }
 
-const product = {
+const defaultProduct = {
   id: 1,
   title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
   price: 109.95,
@@ -44,6 +44,7 @@ export const ProductForm: FC<ProductFormProps> = ({
   className = "",
   buttonName = "Create",
   modifyButton = false,
+  product = defaultProduct,
 }: ProductFormProps) => {
   const {
     register,
