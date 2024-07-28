@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import { ProductsSkeleton } from "./ProductsSkeleton";
 import { useGetLimitProducts } from "@/hooks/useGetLimitProducts";
+import { Button } from "@/components/Button";
 
 interface ProductsProps {
   className?: string;
@@ -27,7 +28,9 @@ export const Products: FC<ProductsProps> = function Products({
       {limitedProducts?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
-      <button onClick={onClick}>Click</button>
+      <Button className='w-[200px]' variant={"default"} onClick={onClick}>
+        Загрузить больше
+      </Button>
     </section>
   );
 };
