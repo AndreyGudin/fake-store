@@ -14,10 +14,6 @@ export const ProductsSkeleton: FC<ProductsSkeletonProps> = ({
       <ProductCardSkeleton />
       <ProductCardSkeleton />
       <ProductCardSkeleton />
-      <ProductCardSkeleton />
-      <ProductCardSkeleton />
-      <ProductCardSkeleton />
-      <ProductCardSkeleton />
     </div>
   );
 };
