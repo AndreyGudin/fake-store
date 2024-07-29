@@ -7,14 +7,30 @@ export const useDeleteProduct = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (id: number) => {
+      const limitedProducts = queryClient.getQueryData([
+        "limitedProducts",
+      ]) as ProductSchema[];
+      console.log("limitedProducts in delete", limitedProducts);
       const products = queryClient.getQueryData([
         "products",
       ]) as ProductSchema[];
+
       const productId = products.findIndex((item) => item.id === id);
+
       const changedProducts = [...products];
+      const changedLimitedProducts = [...limitedProducts];
+
       changedProducts.splice(productId, 1);
+      changedLimitedProducts.splice(productId, 1);
+
       queryClient.setQueryData(
-        ["products"],
+        ["limitedProducts"],
+        (oldData: ProductSchema[] | undefined) => {
+          return oldData ? changedLimitedProducts : oldData;
+        }
+      );
+      queryClient.setQueryData(
+        ["product"],
         (oldData: ProductSchema[] | undefined) => {
           return oldData ? changedProducts : oldData;
         }

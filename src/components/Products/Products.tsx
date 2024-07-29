@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC } from "react";
+import { useEffect, type FC } from "react";
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import { ProductsSkeleton } from "./ProductsSkeleton";
@@ -16,6 +16,9 @@ export const Products: FC<ProductsProps> = function Products({
   useProducts();
   const { data: limitedProducts, refetch, isLoading } = useGetLimitProducts(4);
 
+  useEffect(() => {
+    console.log("limitedProducts", limitedProducts);
+  }, [limitedProducts]);
   if (isLoading) return <ProductsSkeleton />;
 
   const onClick = () => {

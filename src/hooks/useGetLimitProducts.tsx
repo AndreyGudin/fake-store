@@ -15,22 +15,21 @@ export const useGetLimitProducts = (limit: number) => {
       const limitedProducts = queryClient.getQueryData([
         "limitedProducts",
       ]) as ProductSchema[];
-      console.log("limitedProducts", limitedProducts);
 
       const productsNumber = products.length;
-      let result: ProductSchema[] | undefined = [];
+      let result: ProductSchema[] = [];
       if (limitedProducts) {
         if (limit <= productsNumber) {
-          if (limitedProducts.length + limit <= productsNumber) {
+          if (limitedProducts.length + limit + 1 <= productsNumber) {
             console.log("add");
 
             const slice = products.slice(
-              limitedProducts.length,
-              limitedProducts.length + limit
+              limitedProducts.length + 1,
+              limitedProducts.length + limit + 1
             );
             result = [...limitedProducts, ...slice];
           } else {
-            const slice = products.slice(limitedProducts.length);
+            const slice = products.slice(limitedProducts.length + 1);
             result = [...limitedProducts, ...slice];
           }
         }
@@ -38,14 +37,13 @@ export const useGetLimitProducts = (limit: number) => {
         result = products.slice(0, limit);
       }
 
-      console.log("result", result);
       return new Promise<ProductSchema[] | undefined>((resolve, reject) =>
         resolve(result)
       );
     },
-    initialData: () => {
-      return queryClient.getQueryData(["limitedProducts"]);
-    },
+    // initialData: () => {
+    //   return queryClient.getQueryData(["limitedProducts"]);
+    // },
     staleTime: Infinity,
   });
 };
