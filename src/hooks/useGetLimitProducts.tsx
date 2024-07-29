@@ -20,16 +20,17 @@ export const useGetLimitProducts = (limit: number) => {
       let result: ProductSchema[] = [];
       if (limitedProducts) {
         if (limit <= productsNumber) {
-          if (limitedProducts.length + limit + 1 <= productsNumber) {
+          if (limitedProducts.length + limit <= productsNumber) {
             console.log("add");
 
             const slice = products.slice(
-              limitedProducts.length + 1,
+              limitedProducts.length,
               limitedProducts.length + limit + 1
             );
             result = [...limitedProducts, ...slice];
           } else {
-            const slice = products.slice(limitedProducts.length + 1);
+            const slice = products.slice(limitedProducts.length);
+            console.log("slice", slice);
             result = [...limitedProducts, ...slice];
           }
         }

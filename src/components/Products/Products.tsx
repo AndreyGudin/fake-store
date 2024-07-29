@@ -15,10 +15,14 @@ export const Products: FC<ProductsProps> = function Products({
 }: ProductsProps) {
   useProducts();
   const { data: limitedProducts, refetch, isLoading } = useGetLimitProducts(4);
+  const { data: products } = useProducts();
 
   useEffect(() => {
+    console.log("limitedProducts.length", limitedProducts?.length);
+    console.log("products.length", products?.length);
+    console.log("products", products);
     console.log("limitedProducts", limitedProducts);
-  }, [limitedProducts]);
+  }, [limitedProducts, products]);
   if (isLoading) return <ProductsSkeleton />;
 
   const onClick = () => {
@@ -34,7 +38,12 @@ export const Products: FC<ProductsProps> = function Products({
         ))}
       </div>
 
-      <Button className='w-[200px]' variant={"default"} onClick={onClick}>
+      <Button
+        className='w-[200px]'
+        variant={"default"}
+        onClick={onClick}
+        disabled={limitedProducts?.length! >= products?.length!}
+      >
         Загрузить больше
       </Button>
     </section>
