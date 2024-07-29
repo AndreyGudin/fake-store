@@ -45,15 +45,15 @@ export const ProductCard: FC<ProductCardProps> = ({
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle>Вы уверены?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action will delete this product
+              Это действие удалит продукт
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Отменить</AlertDialogCancel>
             <AlertDialogAction onClick={handleDelete}>
-              Continue
+              Продолжить
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -74,7 +74,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       </span>
 
       <Link href={`/${product.id}`}>
-        <Button variant={"secondary"}>More</Button>
+        <Button variant={"secondary"}>Больше</Button>
       </Link>
     </div>
   );

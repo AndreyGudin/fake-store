@@ -6,7 +6,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <main className='flex w-full min-h-screen justify-center items-center'>
       <Link className='self-start' href={"/products"}>
-        <Button variant={"secondary"}>Back</Button>
+        <Button variant={"secondary"}>Назад</Button>
       </Link>
       <ProductInfo id={params.id} />
     </main>

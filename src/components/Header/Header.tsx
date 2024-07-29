@@ -17,7 +17,7 @@ export const Header: FC<HeaderProps> = memo(function Header({
       className={`${className} h-[100px] w-full flex justify-between items-center`}
     >
       <Link href={"/create"}>
-        <Button variant={"default"}>Create product</Button>
+        <Button variant={"default"}>Создать продукт</Button>
       </Link>
     </menu>
   );

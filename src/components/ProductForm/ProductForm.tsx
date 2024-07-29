@@ -42,7 +42,7 @@ const defaultProduct = {
 export const ProductForm: FC<ProductFormProps> = ({
   onSubmit,
   className = "",
-  buttonName = "Create",
+  buttonName = "Создать",
   modifyButton = false,
   product = defaultProduct,
 }: ProductFormProps) => {
@@ -70,21 +70,21 @@ export const ProductForm: FC<ProductFormProps> = ({
         <Input
           disabled={disabledButton}
           defaultValue={product.title}
-          placeholder='Title'
+          placeholder='Заголовок'
           {...register("title")}
         />
         {errors.title?.message && <p>{errors.title?.message as string}</p>}
         <Input
           disabled={disabledButton}
           defaultValue={product.price}
-          placeholder='Price'
+          placeholder='Цена'
           {...register("price", { valueAsNumber: true })}
         />
         {errors.price?.message && <p>{errors.title?.message as string}</p>}
         <Input
           disabled={disabledButton}
           defaultValue={product.description}
-          placeholder='Description'
+          placeholder='Описание'
           {...register("description")}
         />
         {errors.description?.message && (
@@ -93,14 +93,14 @@ export const ProductForm: FC<ProductFormProps> = ({
         <Input
           disabled={disabledButton}
           defaultValue={product.category}
-          placeholder='Category'
+          placeholder='Категория'
           {...register("category")}
         />
         {errors.category?.message && <p>{errors.title?.message as string}</p>}
         <Input
           disabled={disabledButton}
           defaultValue={product.image}
-          placeholder='Image'
+          placeholder='Картинка'
           {...register("image")}
         />
         {errors.image?.message && <p>{errors.title?.message as string}</p>}
@@ -111,11 +111,11 @@ export const ProductForm: FC<ProductFormProps> = ({
           }
         >
           <SelectTrigger className='w-[180px]'>
-            <SelectValue placeholder='Rate a product' />
+            <SelectValue placeholder='Оценить' />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Rating</SelectLabel>
+              <SelectLabel>Оценка</SelectLabel>
               <SelectItem defaultChecked value='1'>
                 1
               </SelectItem>
@@ -132,7 +132,7 @@ export const ProductForm: FC<ProductFormProps> = ({
         </Button>
         {modifyButton && (
           <Button onClick={handleModify} type='button' variant={"default"}>
-            Modify
+            Разблокировать
           </Button>
         )}
       </form>

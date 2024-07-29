@@ -34,8 +34,8 @@ export const ProductInfo: FC<ProductInfoProps> = ({
     };
     mutation.mutate(newProduct);
     toast({
-      title: "Done",
-      description: " Product has been modified successfully",
+      title: "Выполнено",
+      description: " Продукт изменен успешно",
       action: <Check color='green' strokeWidth={"6px"} />,
     });
     router.push("/products");
@@ -46,7 +46,7 @@ export const ProductInfo: FC<ProductInfoProps> = ({
       {product ? (
         <ProductForm
           product={product}
-          buttonName={"Save"}
+          buttonName={"Сохранить"}
           onSubmit={onSubmit}
           modifyButton
         />

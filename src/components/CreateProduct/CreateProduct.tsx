@@ -28,8 +28,8 @@ export const CreateProduct: FC<CreateProductProps> = ({
     };
     mutation.mutate(newProduct);
     toast({
-      title: "Done",
-      description: " Product has been added successfully",
+      title: "Выполнено",
+      description: "Продукт добавлен успешно",
       action: <Check color='green' strokeWidth={"6px"} />,
     });
     router.push("/products");
