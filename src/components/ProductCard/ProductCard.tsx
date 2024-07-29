@@ -59,7 +59,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         </AlertDialogContent>
       </AlertDialog>
 
-      <Image
+      <img
         src={product.image ?? bufferImage}
         alt={product.title}
         width={400}
