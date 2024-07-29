@@ -13,7 +13,6 @@ export const useProduct = (productId: string) => {
         "limitedProducts",
       ]) as ProductSchema[];
       const product = products.find((item) => item.id === Number(productId));
-      console.log("useproduct", product);
       return new Promise<ProductSchema | undefined>((resolve, reject) =>
         resolve(product)
       );

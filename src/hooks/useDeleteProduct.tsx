@@ -10,7 +10,6 @@ export const useDeleteProduct = () => {
       const limitedProducts = queryClient.getQueryData([
         "limitedProducts",
       ]) as ProductSchema[];
-      console.log("limitedProducts in delete", limitedProducts);
       const products = queryClient.getQueryData([
         "products",
       ]) as ProductSchema[];

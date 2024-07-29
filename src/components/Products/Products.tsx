@@ -17,16 +17,9 @@ export const Products: FC<ProductsProps> = function Products({
   const { data: limitedProducts, refetch, isLoading } = useGetLimitProducts(4);
   const { data: products } = useProducts();
 
-  useEffect(() => {
-    console.log("limitedProducts.length", limitedProducts?.length);
-    console.log("products.length", products?.length);
-    console.log("products", products);
-    console.log("limitedProducts", limitedProducts);
-  }, [limitedProducts, products]);
   if (isLoading) return <ProductsSkeleton />;
 
   const onClick = () => {
-    console.log("limitedProductsOnClick", limitedProducts);
     refetch();
   };
 

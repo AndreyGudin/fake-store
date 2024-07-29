@@ -21,8 +21,6 @@ export const useGetLimitProducts = (limit: number) => {
       if (limitedProducts) {
         if (limit <= productsNumber) {
           if (limitedProducts.length + limit <= productsNumber) {
-            console.log("add");
-
             const slice = products.slice(
               limitedProducts.length,
               limitedProducts.length + limit + 1
@@ -30,7 +28,6 @@ export const useGetLimitProducts = (limit: number) => {
             result = [...limitedProducts, ...slice];
           } else {
             const slice = products.slice(limitedProducts.length);
-            console.log("slice", slice);
             result = [...limitedProducts, ...slice];
           }
         }
@@ -42,9 +39,6 @@ export const useGetLimitProducts = (limit: number) => {
         resolve(result)
       );
     },
-    // initialData: () => {
-    //   return queryClient.getQueryData(["limitedProducts"]);
-    // },
     staleTime: Infinity,
   });
 };
