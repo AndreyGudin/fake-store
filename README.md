@@ -1,6 +1,6 @@
 ## Деплой:
 
-https://fake-store-pnsv-j4ekrce3p-andreygudins-projects.vercel.app/
+https://fake-store-pnsv-ozy72h6u8-andreygudins-projects.vercel.app
 
 First, run the development server:
 
