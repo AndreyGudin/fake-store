@@ -68,7 +68,9 @@ export const ProductCard: FC<ProductCardProps> = ({
       />
       <span>{product.title}</span>
       <span>{`${product.price} $`}</span>
-      <span>{product.description}</span>
+      <span className='w-11/12 max-h-[180px] overflow-hidden'>
+        {product.description}
+      </span>
 
       <Link href={`/${product.id}`}>
         <Button variant={"secondary"}>More</Button>
