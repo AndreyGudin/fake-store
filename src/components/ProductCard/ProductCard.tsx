@@ -65,6 +65,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         width={400}
         height={400}
         loading='lazy'
+        className='max-h-[530px]'
       />
       <span>{product.title}</span>
       <span>{`${product.price} $`}</span>
