@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type FC } from "react";
+import { type FC } from "react";
 import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import { ProductsSkeleton } from "./ProductsSkeleton";

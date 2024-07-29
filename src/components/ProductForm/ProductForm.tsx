@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, type FC, useState, useCallback } from "react";
+import { type FC, useState, useCallback } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -16,9 +16,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/Select";
-import { usePostProduct } from "@/hooks/usePostProduct";
-import { useProducts } from "@/hooks/useProducts";
-import { useQueryClient } from "@tanstack/react-query";
 import { ErrorMessage } from "@/components/ErrorMessage";
 import { TextArea } from "@/components/TextArea";
 
