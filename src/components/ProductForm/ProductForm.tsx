@@ -51,7 +51,10 @@ export const ProductForm: FC<ProductFormProps> = ({
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<ProductSchema>({ resolver: zodResolver(ProductValidator) });
+  } = useForm<ProductSchema>({
+    resolver: zodResolver(ProductValidator),
+    defaultValues: product,
+  });
   const [disabledButton, setDisabledButton] = useState(modifyButton);
 
   const handleModify = useCallback(() => {

@@ -1,4 +1,4 @@
-import { LoginForm } from "@/components/LoginForm";
+import { LoginForm } from "@/deprecated/LoginForm";
 
 export default async function Page({ params }: { params: { id: string } }) {
   return (
