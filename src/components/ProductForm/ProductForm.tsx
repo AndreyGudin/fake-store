@@ -20,6 +20,7 @@ import { usePostProduct } from "@/hooks/usePostProduct";
 import { useProducts } from "@/hooks/useProducts";
 import { useQueryClient } from "@tanstack/react-query";
 import { ErrorMessage } from "@/components/ErrorMessage";
+import { TextArea } from "@/components/TextArea";
 
 interface ProductFormProps {
   className?: string;
@@ -75,10 +76,7 @@ export const ProductForm: FC<ProductFormProps> = ({
           {...register("title")}
         />
         {errors.title?.message && (
-          <ErrorMessage
-            message={errors.title?.message as string}
-            className='text-red-600 text-xl'
-          />
+          <ErrorMessage message={errors.title?.message as string} />
         )}
         <Input
           disabled={disabledButton}
@@ -86,15 +84,18 @@ export const ProductForm: FC<ProductFormProps> = ({
           placeholder='Цена'
           {...register("price", { valueAsNumber: true })}
         />
-        {errors.price?.message && <p>{errors.price?.message as string}</p>}
-        <Input
+        {errors.price?.message && (
+          <ErrorMessage message={errors.price?.message as string} />
+        )}
+        <TextArea
           disabled={disabledButton}
           defaultValue={product.description}
           placeholder='Описание'
+          className='min-h-[186px]'
           {...register("description")}
         />
         {errors.description?.message && (
-          <p>{errors.title?.message as string}</p>
+          <ErrorMessage message={errors.description?.message as string} />
         )}
         <Input
           disabled={disabledButton}
@@ -102,14 +103,18 @@ export const ProductForm: FC<ProductFormProps> = ({
           placeholder='Категория'
           {...register("category")}
         />
-        {errors.category?.message && <p>{errors.title?.message as string}</p>}
+        {errors.category?.message && (
+          <ErrorMessage message={errors.category?.message as string} />
+        )}
         <Input
           disabled={disabledButton}
           defaultValue={product.image}
           placeholder='Картинка'
           {...register("image")}
         />
-        {errors.image?.message && <p>{errors.title?.message as string}</p>}
+        {errors.image?.message && (
+          <ErrorMessage message={errors.image?.message as string} />
+        )}
         <Select
           disabled={disabledButton}
           onValueChange={(v) =>
