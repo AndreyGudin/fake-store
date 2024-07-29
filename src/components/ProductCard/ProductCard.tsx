@@ -67,6 +67,9 @@ export const ProductCard: FC<ProductCardProps> = ({
         loading='lazy'
       />
       <span>{product.title}</span>
+      <span>{`${product.price} $`}</span>
+      <span>{product.description}</span>
+
       <Link href={`/${product.id}`}>
         <Button variant={"secondary"}>More</Button>
       </Link>
