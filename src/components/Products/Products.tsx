@@ -24,10 +24,13 @@ export const Products: FC<ProductsProps> = function Products({
   };
 
   return (
-    <section className={`${className} flex gap-7 flex-wrap justify-center`}>
-      {limitedProducts?.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <section className={`${className} flex flex-col items-center gap-6`}>
+      <div className='w-full flex gap-7 flex-wrap justify-center'>
+        {limitedProducts?.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+
       <Button className='w-[200px]' variant={"default"} onClick={onClick}>
         Загрузить больше
       </Button>
