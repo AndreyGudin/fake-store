@@ -10,8 +10,8 @@ import { User, UserValidator } from "@/types/User";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { Button } from "@/components/Button";
-import { useLogin } from "@/hooks/useLogin";
-import { useIsAuthStore } from "@/hooks/store/useIsAuthStore";
+import { useLogin } from "@/deprecated/useLogin";
+import { useIsAuthStore } from "@/deprecated/store/useIsAuthStore";
 
 interface LoginFormProps {
   className?: string;
