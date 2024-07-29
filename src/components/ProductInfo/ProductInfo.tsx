@@ -9,6 +9,7 @@ import { useProducts } from "@/hooks/useProducts";
 import { usePutProduct } from "@/hooks/usePutProduct";
 import { useToast } from "@/components/Toaster";
 import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface ProductInfoProps {
   className?: string;
@@ -19,6 +20,7 @@ export const ProductInfo: FC<ProductInfoProps> = ({
   id,
   className = "",
 }: ProductInfoProps) => {
+  const router = useRouter();
   const { data: product, isLoading, isFetching } = useProduct(id);
   const { toast } = useToast();
   const mutation = usePutProduct();
@@ -36,6 +38,7 @@ export const ProductInfo: FC<ProductInfoProps> = ({
       description: " Product has been modified successfully",
       action: <Check color='green' strokeWidth={"6px"} />,
     });
+    router.push("/products");
   };
 
   return (

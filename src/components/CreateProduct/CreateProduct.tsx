@@ -9,6 +9,7 @@ import { useProducts } from "@/hooks/useProducts";
 import { ProductForm } from "@/components/ProductForm";
 import { useToast } from "@/components/Toaster";
 import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 interface CreateProductProps {
   className?: string;
 }
@@ -16,6 +17,7 @@ interface CreateProductProps {
 export const CreateProduct: FC<CreateProductProps> = ({
   className = "",
 }: CreateProductProps) => {
+  const router = useRouter();
   const mutation = usePostProduct();
   const { data: products } = useProducts();
   const { toast } = useToast();
@@ -30,6 +32,7 @@ export const CreateProduct: FC<CreateProductProps> = ({
       description: " Product has been added successfully",
       action: <Check color='green' strokeWidth={"6px"} />,
     });
+    router.push("/products");
   };
 
   return <ProductForm onSubmit={onSubmit} />;
