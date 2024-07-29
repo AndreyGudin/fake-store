@@ -19,6 +19,7 @@ import {
 import { usePostProduct } from "@/hooks/usePostProduct";
 import { useProducts } from "@/hooks/useProducts";
 import { useQueryClient } from "@tanstack/react-query";
+import { ErrorMessage } from "@/components/ErrorMessage";
 
 interface ProductFormProps {
   className?: string;
@@ -73,14 +74,19 @@ export const ProductForm: FC<ProductFormProps> = ({
           placeholder='Заголовок'
           {...register("title")}
         />
-        {errors.title?.message && <p>{errors.title?.message as string}</p>}
+        {errors.title?.message && (
+          <ErrorMessage
+            message={errors.title?.message as string}
+            className='text-red-600 text-xl'
+          />
+        )}
         <Input
           disabled={disabledButton}
           defaultValue={product.price}
           placeholder='Цена'
           {...register("price", { valueAsNumber: true })}
         />
-        {errors.price?.message && <p>{errors.title?.message as string}</p>}
+        {errors.price?.message && <p>{errors.price?.message as string}</p>}
         <Input
           disabled={disabledButton}
           defaultValue={product.description}
